@@ -1,0 +1,77 @@
+﻿@model PRN_Project.Models.Product
+
+@{
+    ViewData["Title"] = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<html>
+
+<body>
+    <div class="app">
+        <div class="layout">
+            <div class="page-container">
+                <!-- Content Wrapper START -->
+                <div class="main-content1">
+                    <div class="page-header1">
+                        <h2 class="header-title">Detail</h2>
+                        <div class="header-sub-title">
+                            <nav class="breadcrumb1 breadcrumb1-dash">
+                                <a href="home" class="breadcrumb1-item"><i class="fa fa-home m-r-5"></i>Home</a>
+
+                                <span class="breadcrumb1-item active1">Detail</span>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="card1">
+                        <div class="card1-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-5">
+                                        <img alt="" class="img-fluid w-100" src="@Model.Img" style="max-width: 50%">
+                                    </div>
+                                    <div class="col-7">
+                                        <h2 class="font-weight-normal m-b-10 text-center">@Model.Name</h2>
+                                        <div class=" m-b-30">
+
+                                            <div class="m-l-15 text-center">
+                                                <p href="javascript:void(0);" class="text-dark m-b-0 font-weight-semibold">Price: @Model.Price $</p>
+                                                <p class="m-b-0 text-muted font-size-13">Stock: @Model.Stock</p>
+                                            </div>
+                                        </div>
+                                        <div class="m-t-30">
+                                            <blockquote class="blockquote">
+                                                <p class="mb-0">@Model.Description</p>
+                                            </blockquote>
+                                        </div>
+                                        <div class="text-right">
+                                            @if (Model.Stock > 0)
+                                            {
+                                                <button class="btne btne-primary" type="button">
+                                                    <a href="#" style="color: #fff;">
+                                                        <i class="fa fa-shopping-cart m-r-5"></i>Add To Cart
+                                                    </a>
+                                                </button>
+                                            }
+                                            @if (Model.Stock <= 0)
+                                            {
+
+                                                <p class="card1-text show_txt" style="color:red">Sold out </p>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/vendors.min.js"></script>
+
+    <!-- page js -->
+    <!-- Core JS -->
+    <script src="assets/js/app.min.js"></script>
+</body>

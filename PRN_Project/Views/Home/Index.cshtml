@@ -1,0 +1,159 @@
+﻿@using PagedList.Core.Mvc
+@model PagedList.Core.IPagedList<PRN_Project.Models.Product>
+@{
+    ViewData["Title"] = "420 FLOWER SHOP - " + ViewBag.CurrentPage;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int PageCurrent = ViewBag.CurrentPage;
+    int PageNext = PageCurrent + 1;
+
+}
+
+
+<!-- about section -->
+<section class="about_section ">
+    <div class="section_number" style="left:12%">
+        01
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-xl-7">
+                <div class="img-box">
+                    <img src="https://html.design/demo/fior/images/about-img.png" alt="" />
+                </div>
+            </div>
+            <div class="col-md-5 col-xl-5">
+                <div class="detail_box">
+                    <div class="heading_container justify-content-end">
+                        <h2>
+                            About Flowers
+                        </h2>
+                    </div>
+                    <p>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                        industry's standard dummy text Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry's standard dummy text Lorem Ipsum is simply dummy text of the printing
+                        and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since ever since
+                        ever since
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- end about section -->
+<!--PRODUCT -->
+<section class="gallery_section layout_padding">
+    <div class="section_number" style="left:12%">
+        02
+    </div>
+    <div class="heading_container justify-content-center">
+        <h2>
+            Our Gallery
+        </h2>
+    </div>
+    <div class="container">
+        <div class="row">
+        @if (Model !=  null && Model.Count() > 0){
+            foreach (var item in Model)
+            {
+                    string url = $"/{item.Name}-{item.Id}.html";
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card">
+                            <img class="card-img-top csspro" src="@item.Img" alt="@item.Title">
+                            <div class="card-body">
+                                <h4 class="card-title show_txt"><a href="@url" title="View Product">@item.Name</a></h4>
+                                <p class="card-text show_txt">@item.Title</p>
+                                @if (item.Stock <= 0)
+                                {
+                                    <strong style="color: red; font-size: large; font-family: cursive;  ">420$</strong>
+                                    <p class="card-text show_txt" style="color:red">Sold out </p>
+                                }
+                                @if (item.Stock > 0)
+                                {
+                                    <div class="row">
+                                        <p id="amount1" class="card-text show_txt">In stock : @item.Stock</p>
+
+                                        <div class="col">
+                                            <strong style="color: red; font-size: large; font-family: cursive;  ">@item.Price$</strong>
+                                        </div>
+                                        <div class="col">
+                                            <a href="#" class="btn btn-success btn-block">Add to cart</a>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+            }
+        }
+        </div>
+    </div>
+</section>
+<!-- end PRODUCT -->
+<!-- client section -->
+<section class="client_section layout_padding">
+    <div class="container">
+        <div class="heading_container justify-content-center">
+            <h2>
+                What Our Customers Say
+            </h2>
+            <div class="section_number">
+                03
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="client_box">
+                    <div class="detail_box">
+                        <div class="img_box">
+                            <img style="border-radius:50%" src="https://scontent.fsgn2-6.fna.fbcdn.net/v/t39.30808-6/306757811_1768627460175385_2243787168310152981_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=VaukQ4STlIIAX_HGEzq&_nc_ht=scontent.fsgn2-6.fna&oh=00_AfCA37IfAmcCrj2wXRSI_F6OlZiBIct9z5HYwvJDzQcqSQ&oe=635EA922">
+                        </div>
+                        <h5>
+                            Moc Lan Anh
+                        </h5>
+                        <p>
+                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+                            classical Latin literature from 45 BC, making it over
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="client_box">
+                    <div class="detail_box">
+                        <div class="img_box">
+                            <img style="border-radius:50%" src="https://scontent.fsgn2-8.fna.fbcdn.net/v/t39.30808-6/294371031_1285104295356126_4746775459995808758_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=p9Gd20kUPsYAX_mfFEq&_nc_oc=AQlHtiPpGJQV9Bkg_yen5q8q2OAp7hq75Ghu5_gIYk0bSFGJiSDHQj7oMAcbYOoXz-o&_nc_ht=scontent.fsgn2-8.fna&oh=00_AfB8e1o5tIHmwBPh3EY5SLtfWPvr4hwXeFzR8PtiX-lxEQ&oe=635F0345">
+                        </div>
+                        <h5>
+                            Nguyen Le Tien
+                        </h5>
+                        <p>
+                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+                            classical Latin literature from 45 BC, making it over
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end client section -->
+<!-- arrange section -->
+<section class="arrange_section">
+    <div class="container">
+        <div class="detail_box">
+            <h2>
+                Our Wonderful Arrangements
+            </h2>
+            <p>
+                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin
+                literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
+                College in Virginia, looked up one of the more obscure Latin words
+            </p>
+        </div>
+    </div>
+</section>
+<!-- end arrange section -->

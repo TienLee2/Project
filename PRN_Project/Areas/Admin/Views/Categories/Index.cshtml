@@ -1,0 +1,42 @@
+﻿@model IEnumerable<PRN_Project.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table" id="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Idcid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NameCid)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Idcid)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameCid)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Idcid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Idcid">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Idcid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
